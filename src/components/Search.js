@@ -15,21 +15,19 @@ export default function Search() {
   console.log(copydata);
   const changeData = (e) => {
     let getchangedata = e.toLowerCase();
-    if (getchangedata === "") {
-      return setCopyData(fdata);
-    } else {
-      let storedata = copydata.filter((ele, m) => {
-        return ele.rname.toLowerCase().match(getchangedata);
-      });
-      setCopyData(storedata);
-    }
+    if (getchangedata === "") {return setCopyData(fdata);}
+    
+else {
+      let storedata = copydata.filter((ele, m) =>
+        {
+          return ele.rname.toLowerCase().match(getchangedata);
+        });
+      setCopyData(storedata);}
   };
 
   useEffect(() => {
-    setTimeout(() => {
       setCopyData(Fooddata);
-    }, 3000);
-  });
+  }, []);
   return (
     <>
       <div className="container d-flex justify-content-between align-items-center flex-wrap">
@@ -70,7 +68,7 @@ export default function Search() {
           Delivery Restaurants in Rajkot
         </h2>
         <div className="row mt-2 d-flex justify-content-around align-items-center">
-          {copydata && copydata.length ? <Cards data={copydata} /> : "Empty"}
+          {copydata && copydata.length ? <Cards data={copydata} /> : "No item"}
           {/* <Cards data={fdata} /> */}
         </div>
       </section>
